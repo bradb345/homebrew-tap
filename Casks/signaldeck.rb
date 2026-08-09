@@ -16,7 +16,7 @@ cask "signaldeck" do
   # SignalDeck ships ad-hoc signed rather than notarized, so it never self-updates.
   auto_updates false
   # CATapDescription-based process taps require macOS 14.4+; the app targets 15.0.
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "SignalDeck.app"
 
