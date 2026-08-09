@@ -19,8 +19,12 @@ Source: [bradb345/SignalDeck](https://github.com/bradb345/SignalDeck)
 ## Notes
 
 These apps are ad-hoc signed rather than notarized, so downloading them from a browser makes
-macOS report them as damaged. Homebrew clears the quarantine attribute on install, which is
-why the tap exists — `brew install --cask` just works.
+macOS report them as damaged.
+
+Homebrew 6 quarantines every cask unconditionally (the old `--no-quarantine` flag is gone), so
+each cask here clears the attribute itself in a `postflight` stanza. That is the same
+`xattr -dr com.apple.quarantine` step you would otherwise run by hand — `brew install --cask`
+just does it for you.
 
 ## Updating
 
