@@ -22,6 +22,17 @@ cask "signaldeck" do
 
   uninstall quit: "com.bradbernard.SignalDeck"
 
+  # SignalDeck is ad-hoc signed rather than notarized (no Apple Developer certificate),
+  # so Gatekeeper blocks it outright once Homebrew's download carries the quarantine
+  # attribute. Homebrew 6 quarantines every cask unconditionally -- the --no-quarantine
+  # flag no longer exists -- so clear it here. This is exactly the `xattr -dr` step a
+  # manual installer would run by hand, just automated.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/SignalDeck.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Application Support/SignalDeck",
     "~/Library/Preferences/com.bradbernard.SignalDeck.plist",
