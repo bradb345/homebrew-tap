@@ -1,6 +1,6 @@
 cask "signaldeck" do
-  version "0.1.4"
-  sha256 "e49932a099eb4e862067242dd433b29e12ee3b1a7d69bb8638a8f307ae14c33f"
+  version "0.1.5"
+  sha256 "64d5b135e6bf89004918f545d8abbab98c50b8b8af3a45a68077aa7ab3173e35"
 
   url "https://github.com/bradb345/SignalDeck/releases/download/v#{version}/SignalDeck-#{version}.zip",
       verified: "github.com/bradb345/SignalDeck/"
